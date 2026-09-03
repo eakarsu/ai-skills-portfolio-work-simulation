@@ -1,0 +1,213 @@
+// Generated schema — modeled after beautyhqio conventions.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(ANALYST)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  ANALYST
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actorName String?
+  action    String
+  entity    String
+  entityId  String?
+  detail    String?
+  createdAt DateTime @default(now())
+}
+
+model Candidate {
+  id        String   @id @default(cuid())
+  name String
+  email String
+  targetRole String
+  institution String
+  status String
+  joinedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  simulations Simulation[]
+  teamScenarios TeamScenario[]
+  competencyRatings CompetencyRating[]
+  evidenceArtifacts EvidenceArtifact[]
+  portfolios Portfolio[]
+  communicationEvals CommunicationEval[]
+  leadershipSignals LeadershipSignal[]
+  assessorNotes AssessorNote[]
+  hiringSignals HiringSignal[]
+  simulationTemplates SimulationTemplate[]
+  peerFeedbacks PeerFeedback[]
+}
+
+model Simulation {
+  id        String   @id @default(cuid())
+  title String
+  scenario String
+  difficulty String
+  status String
+  startedAt DateTime?
+  durationMinutes Int
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TeamScenario {
+  id        String   @id @default(cuid())
+  name String
+  teamComposition String
+  objective String
+  constraints String
+  status String
+  deliverable String
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CompetencyRating {
+  id        String   @id @default(cuid())
+  competency String
+  assessor String
+  score Float
+  evidenceRef String
+  status String
+  ratedAt DateTime?
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EvidenceArtifact {
+  id        String   @id @default(cuid())
+  kind String
+  title String
+  storageRef String
+  simulationRef String
+  status String
+  capturedAt DateTime?
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Portfolio {
+  id        String   @id @default(cuid())
+  title String
+  shareLink String
+  status String
+  artifactCount Int
+  publishedAt DateTime?
+  overallScore Float
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CommunicationEval {
+  id        String   @id @default(cuid())
+  channel String
+  clarity String
+  audienceFit String
+  score Float
+  status String
+  notes String?
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LeadershipSignal {
+  id        String   @id @default(cuid())
+  behavior String
+  context String
+  strength String
+  score Float
+  status String
+  observedBy String
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AssessorNote {
+  id        String   @id @default(cuid())
+  assessor String
+  subject String
+  body String
+  flagLevel String
+  status String
+  createdOn DateTime?
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HiringSignal {
+  id        String   @id @default(cuid())
+  employer String
+  signalType String
+  strength String
+  status String
+  occurredAt DateTime?
+  role String?
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SimulationTemplate {
+  id        String   @id @default(cuid())
+  name String
+  domain String
+  rubric String
+  difficulty String
+  active Boolean
+  runsCount Int
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PeerFeedback {
+  id        String   @id @default(cuid())
+  fromPeer String
+  context String
+  praise String
+  suggestion String
+  status String
+  contributionScore Float
+  candidateId String?
+  candidate Candidate? @relation(fields: [candidateId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
