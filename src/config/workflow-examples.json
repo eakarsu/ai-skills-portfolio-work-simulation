@@ -1,0 +1,98 @@
+{
+  "sim-design": [
+    {
+      "id": "example-1",
+      "label": "Customer escalation",
+      "values": {
+        "targetRole": "Customer success specialist",
+        "competencies": "Active listening, prioritization, written communication",
+        "difficulty": "Foundation",
+        "duration": "30 minutes"
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Project trade-off",
+      "values": {
+        "targetRole": "Project coordinator",
+        "competencies": "Critical thinking, collaboration, trade-off explanation",
+        "difficulty": "Intermediate",
+        "duration": "45 minutes"
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Operational handoff",
+      "values": {
+        "targetRole": "Operations team lead",
+        "competencies": "Decision-making, delegation, evidence-based handoff",
+        "difficulty": "Advanced",
+        "duration": "60 minutes"
+      }
+    }
+  ],
+  "competency-score": [
+    {
+      "id": "example-1",
+      "label": "Communication rubric",
+      "values": {
+        "competency": "Communication",
+        "behaviors": "Respondent summarizes the issue, asks a clarifying question and states a next step.",
+        "simContext": "Fictional support escalation response; no recording supplied yet.",
+        "scale": "Human rubric 0–4 with explicit anchors; identify missing evidence."
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Analytical reasoning",
+      "values": {
+        "competency": "Critical thinking",
+        "behaviors": "Respondent compares two options and cites a constraint, but omits a counterexample.",
+        "simContext": "Fictional project trade-off written response.",
+        "scale": "Human rubric 1–5; draft rationale only, independent scoring required."
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Collaboration review",
+      "values": {
+        "competency": "Collaboration",
+        "behaviors": "Respondent invites input and assigns owners; disagreement handling is not observed.",
+        "simContext": "Fictional team handoff exercise.",
+        "scale": "Human rubric 0–3; unobserved behavior must remain unassessed."
+      }
+    }
+  ],
+  "portfolio-review": [
+    {
+      "id": "example-1",
+      "label": "Support portfolio",
+      "values": {
+        "targetRole": "Customer success specialist",
+        "topArtifacts": "Example escalation response and knowledge-base revision; attach source artifacts.",
+        "scores": "Human ratings: communication 3/4, problem solving 2/4",
+        "peerFeedback": "Reviewer notes clear writing; asks for stronger follow-up evidence."
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Analyst portfolio",
+      "values": {
+        "targetRole": "Operations analyst",
+        "topArtifacts": "Example reconciliation and process map; attach full artifacts.",
+        "scores": "Human ratings: analysis 4/5, evidence use 3/5",
+        "peerFeedback": "Peer identifies a useful exception analysis and one unsupported assumption."
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Leadership portfolio",
+      "values": {
+        "targetRole": "Team lead",
+        "topArtifacts": "Example handoff plan and retrospective; attach source artifacts.",
+        "scores": "Human ratings: collaboration 3/4, prioritization 3/4",
+        "peerFeedback": "Peers report clear ownership; conflict handling has not been observed."
+      }
+    }
+  ]
+}

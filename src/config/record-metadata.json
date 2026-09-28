@@ -1,0 +1,543 @@
+{
+  "Candidate": {
+    "name": "Candidate",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "email",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "targetRole",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "institution",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "joinedAt",
+        "kind": "date",
+        "required": false
+      }
+    ]
+  },
+  "Simulation": {
+    "name": "Simulation",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "scenario",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "difficulty",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "startedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "durationMinutes",
+        "kind": "number",
+        "required": true,
+        "integer": true,
+        "min": 0
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "TeamScenario": {
+    "name": "TeamScenario",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "teamComposition",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "objective",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "constraints",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "deliverable",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "CompetencyRating": {
+    "name": "CompetencyRating",
+    "fields": [
+      {
+        "name": "competency",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "assessor",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "score",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "evidenceRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "ratedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "EvidenceArtifact": {
+    "name": "EvidenceArtifact",
+    "fields": [
+      {
+        "name": "kind",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "storageRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "simulationRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "capturedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "Portfolio": {
+    "name": "Portfolio",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "shareLink",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "artifactCount",
+        "kind": "number",
+        "required": true,
+        "integer": true,
+        "min": 0
+      },
+      {
+        "name": "publishedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "overallScore",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "CommunicationEval": {
+    "name": "CommunicationEval",
+    "fields": [
+      {
+        "name": "channel",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "clarity",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "audienceFit",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "score",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "notes",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "LeadershipSignal": {
+    "name": "LeadershipSignal",
+    "fields": [
+      {
+        "name": "behavior",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "context",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "strength",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "score",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "observedBy",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "AssessorNote": {
+    "name": "AssessorNote",
+    "fields": [
+      {
+        "name": "assessor",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "subject",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "body",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "flagLevel",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "createdOn",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "HiringSignal": {
+    "name": "HiringSignal",
+    "fields": [
+      {
+        "name": "employer",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "signalType",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "strength",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "occurredAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "role",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "SimulationTemplate": {
+    "name": "SimulationTemplate",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "rubric",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "difficulty",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "active",
+        "kind": "boolean",
+        "required": true
+      },
+      {
+        "name": "runsCount",
+        "kind": "number",
+        "required": true,
+        "integer": true,
+        "min": 0
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  },
+  "PeerFeedback": {
+    "name": "PeerFeedback",
+    "fields": [
+      {
+        "name": "fromPeer",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "context",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "praise",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "suggestion",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "contributionScore",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "candidateId",
+        "kind": "string",
+        "required": false,
+        "relation": "Candidate"
+      }
+    ],
+    "parent": {
+      "field": "candidateId",
+      "entity": "Candidate"
+    }
+  }
+}

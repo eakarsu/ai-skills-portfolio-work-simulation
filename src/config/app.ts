@@ -117,21 +117,21 @@ export const entities: Record<string, EntityConfig> = {
 export const workflows: WorkflowConfig[] = [
   {
     slug: "sim-design",
-    title: "Simulation Designer",
+    title: "Draft: Simulation Designer",
     description: "Design a work simulation scenario and rubric.",
     prompt: "You are an assessment designer. Create a realistic work simulation: scenario, constraints, deliverable, and scoring rubric probing the listed competencies.",
     fields: ["targetRole", "competencies", "difficulty", "duration"],
   },
   {
     slug: "competency-score",
-    title: "Competency Scorer",
+    title: "Draft: Competency Scorer",
     description: "Score a competency from observed evidence.",
-    prompt: "You are an industrial-organizational psychologist. Score the competency from the described behavioral evidence with justification and bias checks.",
+    prompt: "Draft rubric-aligned observations from supplied behavioral evidence. Human assessors assign ratings; aggregate them with the deterministic rubric tool. Do not invent a validated competency score.",
     fields: ["competency", "behaviors", "simContext", "scale"],
   },
   {
     slug: "portfolio-review",
-    title: "Portfolio Reviewer",
+    title: "Draft: Portfolio Reviewer",
     description: "Summarize a candidate portfolio for an employer.",
     prompt: "You are a hiring manager. Summarize the candidate's evidence-backed portfolio: strongest signals, risks, interview probes.",
     fields: ["targetRole", "topArtifacts", "scores", "peerFeedback"],
